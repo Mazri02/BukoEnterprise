@@ -1,0 +1,67 @@
+.ContainerLogin {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-content: center;
+    flex-wrap: wrap;
+}
+
+.ContFull {
+    width: 35%;
+    border-radius: 1em;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px;
+}
+
+.ContainerContent {
+    background-color: grey;
+    text-align: center; 
+    width: 100%;
+    padding: .5em 2em;
+}
+
+.ContainerLogin div h2 {
+    font-weight: bold;
+}
+
+.FormLogin {
+    display: flex;
+    flex-direction: column;
+}
+
+.FormLogin input {
+    margin: .5em;
+    border-radius: 1em;
+    border: 0px solid transparent;
+}
+
+.FormLogin button {
+    background-color: black;
+    color: white;
+    padding: .75em;
+    border-radius: 1em;
+    margin: .5em 0;
+}
+
+.FooterLogin {
+    text-align: center;
+    background-color: black;
+    color: white;
+    padding: 1em;
+    border-radius: 0 0 1em 1em;
+    font-size: .85em;
+}
+
+.HeaderLogin {
+    border-radius: 1em 1em 0 0;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+}
+
+.HeaderLogin img {
+    width: 70%;
+}

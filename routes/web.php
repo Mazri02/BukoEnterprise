@@ -13,8 +13,12 @@ Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 });
 
-Route::get('/cart', function () {
-    return Inertia::render('Cart');
+Route::get('/LoginPage', function () {
+    return Inertia::render('LoginPage');
+});
+
+Route::get('/Template', function () {
+    return Inertia::render('Template');
 });
 
 require __DIR__.'/auth.php';
