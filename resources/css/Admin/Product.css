@@ -1,0 +1,260 @@
+/* Custom Scrollbar for .Admin_ProductListContent */
+::-webkit-scrollbar {
+    width: 5px; /* Width of the scrollbar */
+    height: 5px; /* Height of the horizontal scrollbar */
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Background color of the scrollbar track */
+    border-radius: 10px; /* Rounded corners for the scrollbar track */
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888; /* Color of the scrollbar handle */
+    border-radius: 10px; /* Rounded corners for the scrollbar handle */
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Color of the scrollbar handle when hovered */
+}
+
+.Admin_SalesContainer {
+    width: 100%;
+    height: 100%;
+}
+
+.Admin_SalesNavList li:hover {
+    cursor: pointer;
+}
+
+.Admin_Navbar {
+    background-color: black;
+    padding: 1em 1.5em;
+    display: flex;
+    justify-content: space-between;
+    color: white;
+}
+
+.Admin_NavTitle {
+    margin: auto 0;
+}
+
+.Admin_Navbar button {
+    margin: 0 .5em;
+    background-color: white;
+    color: black;
+    padding: .5em;
+    border-radius: .5em;
+    font-weight: bold;
+}
+
+.Admin_SalesNav {
+    margin: 2em 4em;
+}
+
+.Admin_SalesNavList {
+    display: flex;
+}
+
+.Admin_Selected {
+    background-color: rgb(156, 156, 156) !important;
+    font-weight: bold;
+}
+
+.Admin_SalesNavList li:first-child {
+    border-radius: .5em 0 0 .5em;
+}
+
+.Admin_SalesNavList li:last-child {
+    border-radius: 0 .5em .5em 0;
+}
+
+.Admin_SalesNavList li {
+    background-color: grey;
+    padding: .45em .5em;
+}
+
+.Admin_SalesContent {
+    display: flex;
+    justify-content: center;
+}
+
+.Admin_TableSales {
+    width: 80%;
+}
+
+.Admin_TableSales tr {
+    border-bottom: 1px solid rgba(0,0,0,0.25);
+}
+
+.Admin_TableSales tr td {
+    padding: 2em 0;
+    text-align: center;
+}
+
+
+.Admin_TableSales tr td:nth-child(7) div {
+    background-color: orange;
+    padding: .35em;
+    border-radius: .5em;
+    color: white;
+}
+
+.Admin_IconHolder,.Admin_ProductButtonCard {
+    display: flex;
+    justify-content: center;
+}
+
+.Admin_IconHolder svg {
+    margin: 0 .5em;
+}
+
+.Admin_IconHolder svg:hover {
+    transition: .2s ease;
+    transform: scale(1.15);
+    cursor: pointer;
+}
+
+.Admin_ProductController {
+    display: flex;
+    justify-content: space-between;
+}
+
+.Admin_ProductSearchCont {
+    display: flex;
+    border: 1px solid black;
+    border-radius: .5em;
+    width: 20%;
+}
+
+.Admin_ProductSearchCont input {
+    border: 0px solid transparent;
+    border-radius: .5em;
+    width: 100%;
+}
+
+.Admin_ProductSearchCont svg, .Admin_ProductButton svg {
+    margin: auto .5em;
+}
+
+.Admin_ProductButton {
+    display: flex;
+    border-radius: .5em;
+    background-color: rgb(190, 190, 190);
+    padding: .5em 1em;
+    font-weight: bold;
+}
+
+.Admin_ProductList {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.Admin_ProductTitle {
+    margin: 1em 0;
+}
+
+.Admin_ProductTitle h2 {
+    font-size: 1.65em;
+    font-weight: bold;
+}
+
+.Admin_ProductCardContent {
+    display: flex;
+    flex-wrap: nowrap; /* Prevent wrapping, allow horizontal scroll */
+    overflow-x: auto; /* Enable horizontal scrolling */
+}
+
+.Admin_ProductListContent {
+    overflow-x: auto; /* Ensure the parent container allows scrolling */
+    margin: 1em 0;
+}
+
+.Admin_ProductImageCard img {
+    width: 100%;
+    height: 12em;
+    border-radius: .5em .5em 0 0;
+}
+
+.Admin_ProductDescriptionCard {
+    padding: .5em;
+}
+
+.Admin_ProductDescriptionCard h1{
+    font-size: 1.15em;
+}
+
+.Admin_ProductCategory {
+    display: flex;
+    justify-content: space-between;
+}
+
+.Admin_ProductCategoryButtonController button {
+    background-color: rgb(204, 204, 204);
+    padding: .5em;
+    border-radius: .5em;
+    margin: auto 0;
+}
+
+.Admin_ProductCategoryTitle {
+    font-size: 1.35em;
+    font-weight: bold;
+}
+
+.Admin_ProductDescriptionCard h1, .Admin_ProductDescriptionCard h2, .Admin_ProductDescriptionCard h3 {
+    font-weight : bold;
+}
+
+.Admin_ProductItemCard {
+    width: 20%;
+    min-width: 200px; /* Set a minimum width to prevent shrinking */
+    flex-grow: 0; /* Prevent the card from growing */
+    flex-shrink: 0; /* Prevent the card from shrinking */
+    box-shadow: 0px 0px 5px 2px rgba(0,0,0,0.25);
+    margin: .5em;
+    border-radius: .5em;
+    display: flex; /* Enable flexbox */
+    flex-direction: column; /* Align items in a column */
+}
+
+.Admin_ProductButtonCard {
+    margin: 1em 0;
+}
+
+.Admin_ProductButtonCard button:first-child {
+    background-color: rgb(50, 50, 255);
+}
+
+.Admin_ProductButtonCard button:last-child {
+    background-color: rgb(255, 50, 50);
+}
+
+.Admin_ProductButtonCard button{
+    width: 100%;
+    color: white;
+    padding: .25em 1em;
+    margin: 0 .25em;
+    border-radius: .5em;
+}
+
+.Admin_FormContainer {
+    text-align: left;
+    margin: .5em 0;
+}
+
+.Admin_FormContainer h2 {
+    font-weight: bold;
+}
+
+.Admin_FormContainer input,.Admin_FormContainer select {
+    width: 100%;
+    margin: .25em 0;
+    border-radius: .5em;
+}
+
+.Admin_ConfirmButton {
+    background-color: black;
+}
