@@ -17,8 +17,16 @@ Route::get('/LoginPage', function () {
     return Inertia::render('LoginPage');
 });
 
-Route::get('/Template', function () {
-    return Inertia::render('Template');
+Route::get('/AboutUs', function () {
+    return Inertia::render('AboutUs');
 });
 
-require __DIR__.'/auth.php';
+Route::get('/ContactForm', function () {
+    return Inertia::render('ContactForm');
+});
+
+Route::get('/OrderTracking', function () {
+    return Inertia::render('OrderTracking');
+});
+
+require __DIR__ . '/auth.php';
