@@ -1,0 +1,117 @@
+@font-face {
+    font-family: "inter";
+    src: url("/resources/fonts/inter.ttf");
+    font-weight: normal;
+    font-style: normal;
+}
+
+.HeaderTemplate {
+    display: flex;
+    justify-content: space-between;
+    background-color: black;
+    color: white;
+    padding: 1em 0;
+}
+
+.ContFull {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+
+.ContentInside {
+    padding: 1em 5em 5em 5em;
+    box-sizing: border-box;
+}
+
+h2 {
+    line-height: 2.5em;
+    font-size: 20px;
+    font-weight: 200;
+}
+
+.light {
+    font-weight: 200; /* Light font weight */
+}
+
+.bold {
+    font-weight: bold; /* Bold font weight */
+}
+
+p {
+    font-family: "inter", sans-serif;
+    line-height: 1.5em;
+    text-align: justify;
+}
+
+.titleUs {
+    font-family: "inter", sans-serif;
+    text-align: center;
+    font-size: 25px;
+    margin: 1.5em 1.5em
+}
+
+.PhotoGrid {
+    display: flex;
+    align-self: center;
+    justify-content: space-around;
+}
+
+.DelicacyPhoto {
+    width: 30%;
+    padding-top: 2em;    
+}
+
+.StorePhoto {
+    width: 45%;
+}
+
+.StoreAddress {
+    text-align: center;
+    justify-content: center;
+    padding-top: 1em;
+    font-weight: 400;
+}
+
+
+.Selected { 
+    background-color: white;
+    color: black;
+    font-weight: bold;
+    padding: .5em 1em !important;
+    border-radius: 1em;
+}
+
+.LogoComp {
+    width: 15%;
+    margin: 0 1em;
+}
+
+.ListNavbar {
+    display: flex;
+    margin: auto 0;
+}
+
+.ListNavbar li {
+    padding: 0 1.5em;
+    align-self: center;
+}
+
+.PromoImg {
+    width: 100%;
+    height: auto; 
+    object-fit: cover; 
+}
+
+.FooterTemplate {
+    display: flex;
+    background-color: black;
+    color: white;
+    justify-content: space-around;
+    padding: 2em;
+}
+
+.Address {
+    width: 20%;
+}

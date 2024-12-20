@@ -20,8 +20,8 @@ Route::get('/LoginPage', function () {
     return Inertia::render('LoginPage');
 })->name('LoginPage');
 
-Route::get('/Template', function () {
-    return Inertia::render('Template');
+Route::get('/AboutUs', function () {
+    return Inertia::render('AboutUs');
 });
 
 Route::post('/api/Login',[UserController::class,"login"]);
@@ -61,4 +61,13 @@ Route::middleware(CheckPermission::class)->group(function(){
     Route::post('/api/Admin/EditProduct',[ProductController::class,"editProduct"]);
 });
 
-require __DIR__.'/auth.php';
+
+Route::get('/ContactForm', function () {
+    return Inertia::render('ContactForm');
+});
+
+Route::get('/OrderTracking', function () {
+    return Inertia::render('OrderTracking');
+});
+
+require __DIR__ . '/auth.php';
