@@ -1,0 +1,259 @@
+/* Custom Scrollbar for .Admin_ProductListContent */
+::-webkit-scrollbar {
+    width: 5px; /* Width of the scrollbar */
+    height: 5px; /* Height of the horizontal scrollbar */
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Background color of the scrollbar track */
+    border-radius: 10px; /* Rounded corners for the scrollbar track */
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888; /* Color of the scrollbar handle */
+    border-radius: 10px; /* Rounded corners for the scrollbar handle */
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Color of the scrollbar handle when hovered */
+}
+
+.Admin_SalesContainer {
+    width: 100%;
+    height: 100%;
+}
+
+.Admin_Navbar {
+    background-color: black;
+    padding: 1em 1.5em;
+    display: flex;
+    justify-content: space-between;
+    color: white;
+}
+
+.Admin_NavTitle {
+    margin: auto 0;
+}
+
+.Admin_Navbar button {
+    margin: 0 .5em;
+    background-color: white;
+    color: black;
+    padding: .5em;
+    border-radius: .5em;
+    font-weight: bold;
+}
+
+.Admin_SalesNav {
+    margin: 2em 4em;
+}
+
+.Admin_SalesNavList {
+    display: flex;
+}
+
+.Admin_Selected {
+    background-color: rgb(156, 156, 156) !important;
+    font-weight: bold;
+}
+
+.Admin_SalesNavList li:hover {
+    cursor: pointer;
+}
+
+.Admin_SalesNavList li:first-child {
+    border-radius: .5em 0 0 .5em;
+}
+
+.Admin_SalesNavList li:last-child {
+    border-radius: 0 .5em .5em 0;
+}
+
+.Admin_SalesNavList li {
+    background-color: grey;
+    padding: .45em .5em;
+}
+
+.Admin_SalesContent {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.Admin_TableSales {
+    width: 100%;
+    font-size: .85em;
+}
+
+.Admin_ProductButtonController {
+    display: flex;
+}
+
+.Admin_ProductButtonController div {
+    margin: 0 .5em;
+}
+
+.Admin_ProductTitle {
+    margin: 1em 0;
+}
+
+.Admin_ProductController {
+    display: flex;
+    justify-content: space-between;
+}
+
+.Admin_SalesButtonController {
+    margin: 2em 0;
+}
+
+.Admin_ProductSearchCont {
+    display: flex;
+    border: 1px solid black;
+    border-radius: .5em;
+    width: 30%;
+}
+
+.Admin_ProductSearchCont svg, .Admin_ProductButton svg {
+    margin: auto .5em;
+}
+
+.Admin_ProductButton {
+    display: flex;
+    border-radius: .5em;
+    background-color: rgb(190, 190, 190);
+    padding: .5em 1em;
+    font-weight: bold;
+}
+
+.Admin_ProductSearchCont input {
+    border: 0px solid transparent;
+    border-radius: .5em;
+    width: 100%;
+}
+
+.Admin_ProductSearchCont svg, .Admin_ProductButton svg {
+    margin: auto .5em;
+}
+
+.Admin_ProductTitle h2 {
+    font-size: 1.65em;
+    font-weight: bold;
+}
+
+.Admin_TableSales tr {
+    border-bottom: 1px solid rgba(0,0,0,0.25);
+}
+
+.Admin_TableSales tr td {
+    padding: 2em 0;
+    text-align: center;
+}
+
+
+.Admin_TableSales tr td:nth-child(7) div {
+    background-color: orange;
+    padding: .35em;
+    border-radius: .5em;
+    color: white;
+}
+
+.Admin_IconHolder {
+    display: flex;
+    justify-content: center;
+}
+
+.Admin_IconHolder svg {
+    margin: 0 .5em;
+}
+
+.Admin_IconHolder svg:hover {
+    transition: .2s ease;
+    transform: scale(1.15);
+    cursor: pointer;
+}
+
+.Admin_InventoryCont {
+    display: flex;
+    justify-content: space-between;
+}
+
+.Admin_SalesTableCont {
+    width: 55%;
+}
+
+.Admin_SupplyCont {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin: 0 1em;
+}
+
+.Admin_SupplyContTitle {
+    font-size: 1.25em;
+    font-weight: bold;
+}
+
+.Admin_InventorySupplier {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex: 1 0 20%;
+}
+
+.Admin_InventoryCard {
+    width: 45%;
+    margin: .5em;
+    border-radius: .5em;
+    box-shadow: 0px 0px 5px 2px rgba(0,0,0,0.25);
+}
+
+.Admin_SupplyImage img {
+    width: 100%;
+    border-radius: .5em .5em 0 0;
+    height: 10em;
+}
+
+.Admin_SupplyDescription h2,.Admin_SupplyDescription h3 {
+    font-weight: bold;
+}
+
+.Admin_SupplyDescription span {
+    font-size: .85em;
+}
+
+.Admin_SupplyDescription {
+    font-size: .95em;
+    padding: .5em;
+}
+
+.Admin_Pagination button {
+    background-color: grey;
+    padding: .25em .5em;
+    margin: .5em;
+    border-radius: 1em;
+}
+
+.Admin_Pagination {
+    float: right;
+}
+
+.Admin_FormContainer {
+    text-align: left;
+    margin: .5em 0;
+}
+
+.Admin_FormContainer h2 {
+    font-weight: bold;
+}
+
+.Admin_FormContainer input,.Admin_FormContainer select {
+    width: 100%;
+    margin: .25em 0;
+    border-radius: .5em;
+}
+
+.Admin_ConfirmButton {
+    background-color: black;
+}
