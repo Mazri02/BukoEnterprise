@@ -7,10 +7,21 @@ export default function AboutUs() {
                 <img className="LogoComp" src="../assets/logo.jpg" />
 
                 <ul className="ListNavbar">
-                    <li className="Selected">About Us</li>
-                    <li>Contact Form</li>
-                    <li>Menu</li>
-                    <li>Order Tracking</li>
+                    <li className="Selected">
+                        <a href="/AboutUs">About Us</a>
+                    </li>
+                    <li>
+                        <a href="/ContactForm">Contact Form</a>
+                    </li>
+                    <li>
+                        <a href="/Menu">Menu</a>
+                    </li>
+                    <li>
+                        <a href="/OrderTracking">Order Tracking</a>
+                    </li>
+                    <li>
+                        <a href="/LoginPage">Login</a>
+                    </li>
                 </ul>
             </div>
 
@@ -122,10 +133,18 @@ export default function AboutUs() {
                 </div>
                 <div className="FooterNavbar">
                     <ul className="FooterListNavbar">
-                        <li>About Us</li>
-                        <li>Contact Form</li>
-                        <li>Menu</li>
-                        <li>Order Tracking</li>
+                        <li>
+                            <a href="/AboutUs">About Us</a>
+                        </li>
+                        <li>
+                            <a href="/ContactForm">Contact Form</a>
+                        </li>
+                        <li>
+                            <a href="/Menu">Menu</a>
+                        </li>
+                        <li>
+                            <a href="/OrderTracking">Order Tracking</a>
+                        </li>
                     </ul>
                 </div>
                 <div className="ContactNo">
