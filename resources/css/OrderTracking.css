@@ -1,85 +1,113 @@
-.order-table-container {
-    max-width: 1200px;
-    margin: 2em auto;
-    padding: 1em;
+/* Custom Scrollbar for .Admin_ProductListContent */
+::-webkit-scrollbar {
+    width: 5px; /* Width of the scrollbar */
+    height: 5px; /* Height of the horizontal scrollbar */
 }
 
-h1 {
-    font-size: 2em;
-    margin-bottom: 1em;
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Background color of the scrollbar track */
+    border-radius: 10px; /* Rounded corners for the scrollbar track */
 }
 
-.search-filter-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 1.5em;
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888; /* Color of the scrollbar handle */
+    border-radius: 10px; /* Rounded corners for the scrollbar handle */
 }
 
-.search-input {
-    flex: 1;
-    padding: 0.8em;
-    font-size: 1em;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    margin-right: 1em;
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Color of the scrollbar handle when hovered */
 }
 
-.filter-button {
-    padding: 0.8em 1.5em;
-    font-size: 1em;
-    background: #000;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.filter-button:hover {
-    background: #333;
-}
-
-.order-table {
+.OrderTrackingContainer {
     width: 100%;
-    border-collapse: collapse;
-    margin-top: 1em;
-    border: 1px solid #ddd;
+    height: 100%;
+    margin: 4em 0;
 }
 
-.order-table th,
-.order-table td {
-    text-align: left;
-    padding: 2.5em;
-    border-bottom: 1px solid #ddd;
+.OrderTrackingContent {
+    width: 90%;
+    margin: 0 auto;
 }
 
-.order-table th {
-    background: #f9f9f9;
-    font-weight: bold;
+.OrderTracking_Table {
+    width: 100%;
 }
 
-.order-table td p {
+.OrderTrackingTitle {
     margin: 0.5em 0;
 }
 
-.status {
-    font-weight: bold;
+.OrderTrackingController {
+    display: flex;
+    justify-content: space-between;
+    margin: 2em 0;
+}
+
+.OrderTrackingButtonController {
+    margin: 0.5em 0;
+}
+
+.OrderTrackingSearchCont {
+    display: flex;
+    border: 1px solid black;
+    border-radius: 0.5em;
+    width: 30%;
+}
+
+.OrderTrackingSearchCont button {
+    margin: 0.5em;
+}
+
+.OrderTrackingSearchCont svg,
+.OrderTrackingButton svg {
+    margin: auto 0.5em;
+}
+
+.OrderTrackingButton {
+    display: flex;
+    border-radius: 0.5em;
+    background-color: rgb(190, 190, 190);
     padding: 0.5em 1em;
-    border-radius: 5px;
-    display: inline-block;
+    font-weight: bold;
 }
 
-.status.pending {
-    background: #f9c74f;
-    color: #fff;
+.OrderTrackingSearchCont input {
+    border: 0px solid transparent;
+    border-radius: 0.5em;
+    width: 100%;
 }
 
-.status.success {
-    background: #43aa8b;
-    color: #fff;
+.OrderTrackingTitle h2 {
+    font-size: 1.65em;
+    font-weight: bold;
 }
 
-.status.cancel {
-    background: #f94144;
-    color: #fff;
+.OrderTracking_Table tr {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+}
+
+.OrderTracking_Table tr td {
+    padding: 2em 0;
+    text-align: center;
+}
+
+.OrderTracking_Table tr td:nth-child(8) div {
+    padding: 0.35em;
+    border-radius: 0.5em;
+    color: white;
+}
+
+.Pending {
+    background-color: orange;
+}
+
+.Success {
+    background-color: green;
+}
+
+.Failed {
+    background-color: red;
 }
