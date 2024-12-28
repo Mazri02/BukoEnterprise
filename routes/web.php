@@ -69,5 +69,6 @@ Route::get('/ContactForm', function () {
 Route::get('/OrderTracking', function () {
     return Inertia::render('OrderTracking');
 });
+Route::get('/api/Admin/Sales', [SalesController::class, "getSales"]);
 
 require __DIR__ . '/auth.php';
