@@ -32,14 +32,20 @@ export default function OrderTracking() {
     const [pagination, setPagination] = useState({ pageIndex: 0, pageSize: 6 });
     const [hasSearched, setHasSearched] = useState(false);
 
+    const [language, setLanguage] = useState("en"); // State for language
+
+    const toggleLanguage = () => {
+        setLanguage((prevLanguage) => (prevLanguage === "en" ? "ms" : "en"));
+    };
+
     const columns: any = useMemo(
         () => [
             columnHelper.accessor("CustomerID", {
-                header: "CustomerID",
+                header: language === "en" ? "CustomerID" : "ID Pelanggan",
                 cell: (info) => info.getValue(),
             }),
             columnHelper.accessor("ListItem", {
-                header: "ListItem",
+                header: language === "en" ? "ListItem" : "Senarai Item",
                 cell: (info: any) => {
                     const items = info
                         .getValue()
@@ -58,7 +64,7 @@ export default function OrderTracking() {
                 },
             }),
             columnHelper.accessor("Quantity", {
-                header: "Quantity",
+                header: language === "en" ? "Quantity" : "Kuantiti",
                 cell: (info: any) => {
                     const items = info
                         .getValue()
@@ -77,11 +83,11 @@ export default function OrderTracking() {
                 },
             }),
             columnHelper.accessor("Email", {
-                header: "Email",
+                header: language === "en" ? "Email" : "Emel",
                 cell: (info) => info.getValue(),
             }),
             columnHelper.accessor("Price", {
-                header: "Price",
+                header: language === "en" ? "Price" : "Harga",
                 cell: (info: any) => {
                     const items = info
                         .getValue()
@@ -100,15 +106,15 @@ export default function OrderTracking() {
                 },
             }),
             columnHelper.accessor("Total", {
-                header: "Total",
+                header: language === "en" ? "Total" : "Jumlah",
                 cell: (info) => "RM " + info.getValue(),
             }),
             columnHelper.accessor("Date", {
-                header: "Date",
+                header: language === "en" ? "Date" : "Tarikh",
                 cell: (info) => info.getValue(),
             }),
             columnHelper.accessor("Status", {
-                header: "Order Status",
+                header: language === "en" ? "Order Status" : "Status Pesanan",
                 cell: (info) => {
                     return (
                         <div className={info.getValue()}>{info.getValue()}</div>
@@ -116,7 +122,7 @@ export default function OrderTracking() {
                 },
             }),
         ],
-        []
+        [language]
     );
 
     useEffect(() => {
@@ -129,7 +135,11 @@ export default function OrderTracking() {
 
     const handleSearch = () => {
         if (!searchCustomerId.trim()) {
-            alert("Please enter a Customer ID");
+            alert(
+                language === "en"
+                    ? "Please enter a Customer ID"
+                    : "Sila masukkan ID Pelanggan"
+            );
             return;
         }
 
@@ -140,7 +150,9 @@ export default function OrderTracking() {
         setHasSearched(true);
 
         if (filtered.length === 0) {
-            alert("No orders found for this Customer ID");
+            language === "en"
+                ? "No orders found for this Customer ID"
+                : "Tiada pesanan dijumpai untuk ID Pelanggan ini";
         }
     };
 
@@ -165,20 +177,52 @@ export default function OrderTracking() {
 
                 <ul className="ListNavbar">
                     <li>
-                        <a href="/AboutUs">About Us</a>
+                        <a href="/AboutUs">
+                            {language === "en" ? "About Us" : "Tentang Kami"}
+                        </a>
                     </li>
                     <li>
-                        <a href="/ContactForm">Contact Form</a>
+                        <a href="/ContactForm">
+                            {language === "en"
+                                ? "Contact Form"
+                                : "Borang Hubungi"}
+                        </a>
                     </li>
                     <li>
-                        <a href="/Menu">Menu</a>
+                        <a href="/Menu">
+                            {language === "en" ? "Menu" : "Menu"}
+                        </a>
                     </li>
                     <li className="Selected">
-                        <a href="/OrderTracking">Order Tracking</a>
+                        <a href="/OrderTracking">
+                            {language === "en"
+                                ? "Order Tracking"
+                                : "Jejak Pesanan"}
+                        </a>
                     </li>
                     <li>
-                        <a href="/LoginPage">Login</a>
+                        <a href="/LoginPage">
+                            {language === "en" ? "Login" : "Log Masuk"}
+                        </a>
                     </li>
+                    <div
+                        style={{
+                            display: "flex",
+                            alignItems: "center",
+                            marginRight: "20px",
+                        }}
+                    >
+                        <span style={{ marginRight: "10px" }}>MY</span>
+                        <label className="switch">
+                            <input
+                                type="checkbox"
+                                checked={language === "ms"}
+                                onChange={toggleLanguage}
+                            />
+                            <span className="slider"></span>
+                        </label>
+                        <span style={{ marginLeft: "10px" }}>EN</span>
+                    </div>
                 </ul>
             </div>
 
@@ -200,7 +244,11 @@ export default function OrderTracking() {
                                         <BsSearch />
                                         <input
                                             type="text"
-                                            placeholder="Enter Customer ID"
+                                            placeholder={
+                                                language === "en"
+                                                    ? "Enter Customer ID"
+                                                    : "Masukkan ID Pelanggan"
+                                            }
                                             value={searchCustomerId}
                                             onChange={(e) =>
                                                 setSearchCustomerId(
@@ -293,16 +341,30 @@ export default function OrderTracking() {
                 <div className="FooterNavbar">
                     <ul className="FooterListNavbar">
                         <li>
-                            <a href="/AboutUs">About Us</a>
+                            <a href="/AboutUs">
+                                {language === "en"
+                                    ? "About Us"
+                                    : "Tentang Kami"}
+                            </a>
                         </li>
                         <li>
-                            <a href="/ContactForm">Contact Form</a>
+                            <a href="/ContactForm">
+                                {language === "en"
+                                    ? "Contact Form"
+                                    : "Borang Hubungi"}
+                            </a>
                         </li>
                         <li>
-                            <a href="/Menu">Menu</a>
+                            <a href="/Menu">
+                                {language === "en" ? "Menu" : "Menu"}
+                            </a>
                         </li>
                         <li>
-                            <a href="/OrderTracking">Order Tracking</a>
+                            <a href="/OrderTracking">
+                                {language === "en"
+                                    ? "Order Tracking"
+                                    : "Jejak Pesanan"}
+                            </a>
                         </li>
                     </ul>
                 </div>
