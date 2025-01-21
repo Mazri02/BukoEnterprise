@@ -5,6 +5,7 @@ use App\Http\Controllers\SalesController;
 use App\Http\Controllers\StockController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\CheckPermission;
+use App\Http\Controllers\MailController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -65,6 +66,8 @@ Route::middleware(CheckPermission::class)->group(function () {
 Route::get('/ContactForm', function () {
     return Inertia::render('ContactForm');
 });
+
+Route::post('/api/send-email', [MailController::class, 'sendEmail']);
 
 Route::get('/OrderTracking', function () {
     return Inertia::render('OrderTracking');
