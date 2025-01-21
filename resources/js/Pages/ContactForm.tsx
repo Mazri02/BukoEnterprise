@@ -1,13 +1,58 @@
 import "../../css/Dashboard.css";
 import "../../css/ContactForm.css";
+import axios from "axios";
 
 import React, { useState } from "react";
 
 export default function ContactForm() {
     const [language, setLanguage] = useState("en"); // State for language
+    const [formData, setFormData] = useState({
+        firstName: "",
+        lastName: "",
+        email: "",
+        message: "",
+    });
+    const [successMessage, setSuccessMessage] = useState("");
+    const [alertMessage, setAlertMessage] = useState({ type: "", message: "" });
 
     const toggleLanguage = () => {
         setLanguage((prevLanguage) => (prevLanguage === "en" ? "ms" : "en"));
+    };
+
+    const handleChange = (
+        e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    ) => {
+        setFormData({ ...formData, [e.target.id]: e.target.value });
+    };
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        try {
+            const response = await axios.post("/api/send-email", formData);
+            if (response.status === 200) {
+                setAlertMessage({
+                    type: "success",
+                    message:
+                        language === "en"
+                            ? "Email sent successfully!"
+                            : "Emel berjaya dihantar!",
+                });
+                setFormData({
+                    firstName: "",
+                    lastName: "",
+                    email: "",
+                    message: "",
+                });
+            }
+        } catch (error) {
+            setAlertMessage({
+                type: "error",
+                message:
+                    language === "en"
+                        ? "Failed to send email. Please try again."
+                        : "Gagal menghantar emel. Sila cuba lagi.",
+            });
+        }
     };
 
     return (
@@ -79,17 +124,22 @@ export default function ContactForm() {
                                 ? "Let us know if you need help"
                                 : "Beritahu kami jika anda memerlukan bantuan"}
                         </p>
-                        <form>
+                        {successMessage && (
+                            <p className="success-message">{successMessage}</p>
+                        )}
+                        <form onSubmit={handleSubmit}>
                             <div className="form-group">
                                 <div className="input-group">
-                                    <label htmlFor="first-name">
+                                    <label htmlFor="firstName">
                                         {language === "en"
                                             ? "First Name"
                                             : "Nama Pertama"}
                                     </label>
                                     <input
                                         type="text"
-                                        id="first-name"
+                                        id="firstName"
+                                        value={formData.firstName}
+                                        onChange={handleChange}
                                         placeholder={
                                             language === "en"
                                                 ? "Enter your first name"
@@ -99,14 +149,16 @@ export default function ContactForm() {
                                     />
                                 </div>
                                 <div className="input-group">
-                                    <label htmlFor="last-name">
+                                    <label htmlFor="lastName">
                                         {language === "en"
                                             ? "Last Name"
                                             : "Nama Akhir"}
                                     </label>
                                     <input
                                         type="text"
-                                        id="last-name"
+                                        id="lastName"
+                                        value={formData.lastName}
+                                        onChange={handleChange}
                                         placeholder={
                                             language === "en"
                                                 ? "Enter your last name"
@@ -125,6 +177,8 @@ export default function ContactForm() {
                                 <input
                                     type="email"
                                     id="email"
+                                    value={formData.email}
+                                    onChange={handleChange}
                                     placeholder={
                                         language === "en"
                                             ? "Enter your email address"
@@ -141,6 +195,8 @@ export default function ContactForm() {
                                 </label>
                                 <textarea
                                     id="message"
+                                    value={formData.message}
+                                    onChange={handleChange}
                                     placeholder={
                                         language === "en"
                                             ? "Enter your question or message"
