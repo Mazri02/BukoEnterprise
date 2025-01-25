@@ -85,11 +85,6 @@ export default function ContactForm() {
                                 : "Jejak Pesanan"}
                         </a>
                     </li>
-                    <li>
-                        <a href="/LoginPage">
-                            {language === "en" ? "Login" : "Log Masuk"}
-                        </a>
-                    </li>
                     <div
                         style={{
                             display: "flex",
