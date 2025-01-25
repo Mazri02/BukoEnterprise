@@ -6,6 +6,7 @@ use App\Http\Controllers\SalesController;
 use App\Http\Controllers\StockController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\CheckPermission;
+use App\Http\Controllers\MailController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -83,6 +84,8 @@ Route::get('/Checkout', function () {
 Route::get('/Payment', function () {
     return Inertia::render('Payment');
 })->name('Payment');
+
+Route::post('/api/send-email', [MailController::class, 'sendEmail']);
 
 Route::get('/OrderTracking', function () {
     return Inertia::render('OrderTracking');
