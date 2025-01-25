@@ -331,7 +331,7 @@ export default function OrderTracking() {
 
             <div className="FooterTemplate">
                 <div className="BukoCopyright">
-                    Buko Ori Phillipines <br />@ Copyright Buko Enterprise 2024
+                    Buko Ori Phillipines <br />@ Copyright Buko Enterprise {new Date().getFullYear()}
                 </div>
                 <div className="FooterNavbar">
                     <ul className="FooterListNavbar">

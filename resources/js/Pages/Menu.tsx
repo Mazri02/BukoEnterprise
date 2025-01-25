@@ -154,7 +154,7 @@ export default function Menu() {
       {/* Footer */}
       <div className="FooterTemplate">
         <div className="BukoCopyright">
-          Buko Ori Philippines <br /> @ Copyright Buko Enterprise 2024
+          Buko Ori Philippines <br /> @ Copyright Buko Enterprise {new Date().getFullYear()}
         </div>
         <div className="FooterNavbar">
           <ul className="FooterListNavbar">
