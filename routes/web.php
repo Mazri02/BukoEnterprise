@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\SalesController;
 use App\Http\Controllers\StockController;
 use App\Http\Controllers\UserController;
@@ -24,8 +25,12 @@ Route::get('/AboutUs', function () {
     return Inertia::render('AboutUs');
 });
 
+
 Route::post('/api/Login', [UserController::class, "login"]);
 Route::get('/api/Logout', [UserController::class, "logout"]);
+Route::get('/Category', [ProductController::class, "getCategory"]);
+Route::get('/Product', [ProductController::class, "getProduct"]);
+Route::post('/Payment', [CustomerController::class, "addCustomerOrder"]);
 
 Route::middleware(CheckPermission::class)->group(function () {
     Route::get('/AdminSales', function () {
@@ -65,6 +70,19 @@ Route::middleware(CheckPermission::class)->group(function () {
 Route::get('/ContactForm', function () {
     return Inertia::render('ContactForm');
 });
+
+
+Route::get('/Menu', function () {
+    return Inertia::render('Menu');
+});
+
+Route::get('/Checkout', function () {
+    return Inertia::render('Checkout');
+})->name('Checkout');
+
+Route::get('/Payment', function () {
+    return Inertia::render('Payment');
+})->name('Payment');
 
 Route::get('/OrderTracking', function () {
     return Inertia::render('OrderTracking');

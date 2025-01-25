@@ -8,7 +8,7 @@ import $ from 'jquery';
 import Header from './Header';
 
 export default function Sales() {
-    const [Item, SetItem] = React.useState<any>();
+    const [Item, SetItem] = React.useState<any>()   
     const [Category, SetCategory] = React.useState<any>()
 
     useEffect(() => {

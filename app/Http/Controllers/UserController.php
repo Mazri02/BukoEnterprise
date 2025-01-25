@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Session;
 
 class UserController extends Controller {
     public function login(Request $req){
-        $data = User::where('name',$req->Username)->get()->first();
+        $data = User::where('email',$req->Username)->get()->first();
 
         if($data->password == hash('sha256',$req->Userpass)){
             session(['token' => $data->id]);

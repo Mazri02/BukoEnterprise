@@ -17,7 +17,6 @@ class Customer extends Model
 
     // Define fillable fields
     protected $fillable = [
-        'CustomerID',
         'CustomerPhone',
         'CustomerEmail',
         'CustomerAddress1',

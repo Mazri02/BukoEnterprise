@@ -1,0 +1,170 @@
+/* Menu Container */
+.menu-container {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Tabs Container */
+.tabs {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: black; /* Black background behind tabs */
+  border-bottom: 1px solid #000000;
+  margin-bottom: 1em;
+}
+
+/* Default Tab Button */
+.tab-button {
+  flex: 1; /* Equal width for all tabs */
+  padding: 10px 20px;
+  font-size: 16px;
+  text-align: center;
+  color: black; /* Default text color */
+  background-color: white; /* Default tab background */
+  border: none;
+  cursor: pointer;
+  border-right: 1px solid #000000; /* Separator between tabs */
+  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth animation */
+}
+
+/* "Menu" Tab (Always Black) */
+.tab-button.menu {
+  color: white; /* White text for "Menu" */
+  background-color: black; /* Black background for "Menu" */
+  font-weight: bold;
+  cursor: default; /* Non-clickable look (optional) */
+}
+
+/* Active State for Other Tabs */
+.tab-button:not(.menu).active {
+  color: white; /* White text for active tab */
+  background-color: black; /* Black background for active tab */
+  font-weight: bold;
+}
+
+/* Main Content */
+.main-content {
+  display: flex;
+}
+
+/* Products */
+.products {
+  flex: 1 0 35%; /* 80% width */
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2em;
+  justify-content: center;
+  margin: 1em 0;
+}
+
+.product-card {
+  width: 200px;
+  padding: 10px;
+}
+
+.product-card button{
+  margin-top: 0.5em;
+  width: 100%;
+  padding: 0.5em;
+}
+
+.product-card h3, p{
+  font-weight: med;
+  text-align: left;
+}
+
+.product-image {
+  width: 100%;
+  height: 12.5em;
+  object-fit: cover;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+/* Cart */
+.cart {
+  flex: 1; /* 20% width */
+  padding: 2em 2em;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin: 1em;
+  text-align: center; /* Center align all text */
+}
+
+.cart h2 {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.cart p {
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  text-align: center; /* Center align all text */
+}
+
+.cart-item span {
+  flex: 1;
+  text-align: center;
+}
+
+.eat-type {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-bottom: 10px;
+  text-align: left; /* Align elements to the left */
+}
+
+.eat-type h2 {
+  font-weight: bold;
+  margin-bottom: 0.5em;
+  text-align: left; /* Align text to the left */
+}
+
+.eat-type label {
+  margin-bottom: 0.5em;
+  width: 100%; /* Make the label take the full width */
+  text-align: left; /* Align text to the left */
+}
+
+.eat-type input[type="radio"] {
+  margin-right: 1em;
+}
+
+.eat-type button {
+  margin-top: 1.5em;
+  width: 100%;
+}
+
+.input {
+  width: 50px;
+  text-align: center;
+  margin: 0 10px;
+}
+
+.remove-button {
+  background-color: #ff6666;
+  border: none;
+  color: #fff;
+  padding: 5px;
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+.button {
+  background-color: #333;
+  color: #fff;
+  padding: 10px 15px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
