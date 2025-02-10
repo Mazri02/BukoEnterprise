@@ -1,19 +1,17 @@
 import "../../css/Dashboard.css";
 import "../../css/ContactForm.css";
 import axios from "axios";
-
 import React, { useState } from "react";
 
 export default function ContactForm() {
     const [language, setLanguage] = useState("en"); // State for language
     const [formData, setFormData] = useState({
-        firstName: "",
-        lastName: "",
+        first_name: "",
+        last_name: "",
         email: "",
         message: "",
     });
-    const [successMessage, setSuccessMessage] = useState("");
-    const [alertMessage, setAlertMessage] = useState({ type: "", message: "" });
+    const [popupMessage, setPopupMessage] = useState("");
 
     const toggleLanguage = () => {
         setLanguage((prevLanguage) => (prevLanguage === "en" ? "ms" : "en"));
@@ -22,36 +20,35 @@ export default function ContactForm() {
     const handleChange = (
         e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
     ) => {
-        setFormData({ ...formData, [e.target.id]: e.target.value });
+        setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         try {
-            const response = await axios.post("/api/send-email", formData);
-            if (response.status === 200) {
-                setAlertMessage({
-                    type: "success",
-                    message:
-                        language === "en"
-                            ? "Email sent successfully!"
-                            : "Emel berjaya dihantar!",
-                });
-                setFormData({
-                    firstName: "",
-                    lastName: "",
-                    email: "",
-                    message: "",
-                });
-            }
-        } catch (error) {
-            setAlertMessage({
-                type: "error",
-                message:
-                    language === "en"
-                        ? "Failed to send email. Please try again."
-                        : "Gagal menghantar emel. Sila cuba lagi.",
+            await axios.post("http://127.0.0.1:8000/api/ContactForm", formData);
+            setPopupMessage("Feedback sent successfully!");
+            setFormData({
+                first_name: "",
+                last_name: "",
+                email: "",
+                message: "",
             });
+        } catch (error: unknown) {
+            if (axios.isAxiosError(error)) {
+                // If error is an Axios error, extract message safely
+                setPopupMessage(
+                    error.response?.data?.message ||
+                        error.message ||
+                        "Failed to send feedback. Try again."
+                );
+            } else if (error instanceof Error) {
+                // Handle generic JS errors
+                setPopupMessage(error.message);
+            } else {
+                // Fallback for unknown errors
+                setPopupMessage("An unexpected error occurred.");
+            }
         }
     };
 
@@ -119,9 +116,6 @@ export default function ContactForm() {
                                 ? "Let us know if you need help"
                                 : "Beritahu kami jika anda memerlukan bantuan"}
                         </p>
-                        {successMessage && (
-                            <p className="success-message">{successMessage}</p>
-                        )}
                         <form onSubmit={handleSubmit}>
                             <div className="form-group">
                                 <div className="input-group">
@@ -132,8 +126,9 @@ export default function ContactForm() {
                                     </label>
                                     <input
                                         type="text"
-                                        id="firstName"
-                                        value={formData.firstName}
+                                        id="first_name"
+                                        name="first_name"
+                                        value={formData.first_name}
                                         onChange={handleChange}
                                         placeholder={
                                             language === "en"
@@ -151,8 +146,9 @@ export default function ContactForm() {
                                     </label>
                                     <input
                                         type="text"
-                                        id="lastName"
-                                        value={formData.lastName}
+                                        id="last_name"
+                                        name="last_name"
+                                        value={formData.last_name}
                                         onChange={handleChange}
                                         placeholder={
                                             language === "en"
@@ -172,6 +168,7 @@ export default function ContactForm() {
                                 <input
                                     type="email"
                                     id="email"
+                                    name="email"
                                     value={formData.email}
                                     onChange={handleChange}
                                     placeholder={
@@ -190,6 +187,7 @@ export default function ContactForm() {
                                 </label>
                                 <textarea
                                     id="message"
+                                    name="message"
                                     value={formData.message}
                                     onChange={handleChange}
                                     placeholder={
@@ -204,6 +202,11 @@ export default function ContactForm() {
                                 {language === "en" ? "Submit" : "Hantar"}
                             </button>
                         </form>
+                        {popupMessage && (
+                            <div className="mt-4 p-2 bg-green-200 text-green-800 rounded">
+                                {popupMessage}
+                            </div>
+                        )}
                     </div>
                     {/* Image Section */}
                     <div className="image-container">
@@ -214,7 +217,8 @@ export default function ContactForm() {
 
             <div className="FooterTemplate">
                 <div className="BukoCopyright">
-                    Buko Ori Phillipines <br />@ Copyright Buko Enterprise {new Date().getFullYear()}
+                    Buko Ori Phillipines <br />@ Copyright Buko Enterprise{" "}
+                    {new Date().getFullYear()}
                 </div>
                 <div className="FooterNavbar">
                     <ul className="FooterListNavbar">
