@@ -73,7 +73,7 @@ class ProductController {
                 DB::raw('COUNT(P.ProductID) as Count'),
                 DB::raw('SUM(P.ProductPrice) as Profit')
             )
-            ->groupBy('P.ProductID')
+            ->groupBy('P.ProductID', 'P.ProductName', 'P.ProductImage')
             ->orderBy('Profit', 'DESC')
             ->take(5) 
             ->get();
@@ -100,10 +100,10 @@ class ProductController {
         return $summary;
     }
 
-    public function getStats() {
-        $orders = DB::table('BukoEnterprise.ORDER as O')
-        ->join('BukoEnterprise.PRODUCTS as P', 'P.ProductID', '=', 'O.ProductID')
-        ->join('BukoEnterprise.CUSTOMER as C', 'C.CustomerID', '=', 'O.CustomerID')
+    public function getStats() { 
+        $orders = DB::table('order as O')
+        ->join('products as P', 'P.ProductID', '=', 'O.ProductID')
+        ->join('customer as C', 'C.CustomerID', '=', 'O.CustomerID')
         ->select(DB::raw('DATE_FORMAT(O.ORDERDATE, "%Y-%m") as OrderMonth'), DB::raw('SUM(P.ProductPrice) as TotalPrice'))
         ->groupBy('OrderMonth')
         ->orderBy('OrderMonth', 'asc')

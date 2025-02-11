@@ -5,10 +5,12 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Log;
 
 class UserController extends Controller {
     public function login(Request $req){
         $data = User::where('name',$req->Username)->get()->first();
+        Log::info($data->password == hash('sha256',$req->Userpass));
 
         if($data->password == hash('sha256',$req->Userpass)){
             session(['token' => $data->id]);

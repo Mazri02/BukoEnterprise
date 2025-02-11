@@ -24,7 +24,7 @@ class SalesController extends Controller
                 DB::raw('GROUP_CONCAT(DISTINCT O.OrderDate SEPARATOR ",") AS Date'),
                 DB::raw('GROUP_CONCAT( DISTINCT O.OrderStatus SEPARATOR ",") AS Status')
             )
-            ->groupBy('C.CustomerID')
+            ->groupBy('C.CustomerID', 'O.CUSTOMERID', 'C.CUSTOMEREMAIL')
             ->get();
 
         return $salesData;
