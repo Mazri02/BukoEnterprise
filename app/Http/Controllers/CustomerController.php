@@ -4,14 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\Customer;
 use App\Models\Order;
-use Illuminate\Support\Facades\Log;
+use App\Mail\OrderConfirmationMail;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
 
 class CustomerController extends Controller
 {
-    // Add data via Customer and Order model
-    public function addCustomerOrder(Request $req) {
-
+    public function addCustomerOrder(Request $req)
+    {
         $customer = new Customer();
         $customer->CustomerPhone = $req->input('phone');
         $customer->CustomerEmail = $req->input('email');
@@ -22,8 +22,12 @@ class CustomerController extends Controller
         $customer->CustomerPayment = $req->input('paymentType');
         $customer->save();
 
+        // Fetch the CustomerID
+        $customerID = $customer->CustomerID;
+
         $products = $req->input('products');
-        
+        $orderedProducts = []; // Store all ordered products
+
         foreach ($products as $product) {
             $order = new Order();
             $order->ProductID = $product['id'];
@@ -32,11 +36,17 @@ class CustomerController extends Controller
             $order->OrderStatus = 'Pending';
             $order->OrderQuantity = $product['quantity'];
             $order->save();
+
+            // Add product details to the array
+            $orderedProducts[] = $product;
         }
-    
+
+        // ✅ Send a **single** email after all orders are created
+        Mail::to($customer->CustomerEmail)->send(new OrderConfirmationMail($customer, $orderedProducts));
+
         return response()->json([
             "status" => 200,
-            "message" => 'Success, Customer and Order Added'
+            "message" => 'Success, Customer and Order Added. Email Sent.'
         ]);
     }
 }
