@@ -126,7 +126,7 @@ export default function OrderTracking() {
     );
 
     useEffect(() => {
-        axios.get<OrderData[]>("/api/Admin/Sales").then((res) => {
+        axios.get<OrderData[]>("/Admin/Sales").then((res) => {
             if (res.status === 200) {
                 setTableData(res.data);
             }

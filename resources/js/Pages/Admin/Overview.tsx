@@ -46,19 +46,19 @@ export default function Sales() {
      };
 
      useEffect(() => {
-        axios.get('/api/Admin/Profit').then((res) => {
+        axios.get('/Admin/Profit').then((res) => {
             if(res.status == 200){
                 SetAnalysis(res.data)
             }
         })
 
-        axios.get('/api/Admin/Overview').then((res) => {
+        axios.get('/Admin/Overview').then((res) => {
             if(res.status == 200){
                 SetOverview(res.data)
             }
         })
 
-        axios.get('/api/Admin/Stats').then((res) => {
+        axios.get('/Admin/Stats').then((res) => {
             if(res.status == 200){
                 let label = [],stats = [];
 

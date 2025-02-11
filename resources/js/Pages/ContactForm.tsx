@@ -26,7 +26,7 @@ export default function ContactForm() {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         try {
-            await axios.post("http://127.0.0.1:8000/api/ContactForm", formData);
+            await axios.post("/Feedback", formData);
             setPopupMessage("Feedback sent successfully!");
             setFormData({
                 first_name: "",

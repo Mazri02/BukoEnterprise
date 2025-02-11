@@ -26,7 +26,7 @@ export default function Header() {
     }
 
     const handleLogout = () => {
-        axios.get('/api/Logout').then((res) => {
+        axios.get('/Logout').then((res) => {
             if(res.status === 200){
                 window.location.href = route('LoginPage');
                 
@@ -73,7 +73,7 @@ export default function Header() {
                 data.append('UserEmail', $('#Admin_Email').val() as string);
                 data.append('UserPass', $('#Admin_Password').val() as string);
 
-                axios.post('/api/Admin/ChangePass',data).then((res) => {
+                axios.post('/Admin/ChangePass',data).then((res) => {
                     if(res.status === 200){
                         Swal.fire({
                             toast: true,

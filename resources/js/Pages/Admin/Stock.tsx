@@ -51,7 +51,7 @@ export default function Sales() {
     );
 
     useEffect(() => {
-        axios.get('/api/Admin/Stock').then((res) => {
+        axios.get('/Admin/Stock').then((res) => {
             if (res.status === 200) {
                 setTableData(res.data);
             }
@@ -73,7 +73,7 @@ export default function Sales() {
     const StockEdit = (ids:any) => {
         const data = new FormData()
         data.append('StockID',ids)
-        axios.post('/api/Admin/SearchStock',data).then((res) => {
+        axios.post('/Admin/SearchStock',data).then((res) => {
             if(res.status === 200){
                 Swal.fire({
                     title: "Update Stock " + res.data.StockItem,
@@ -95,9 +95,9 @@ export default function Sales() {
                         data.append('StockDate',$('#Admin_StockDate').val() as string)
                         data.append('StockID', ids)
         
-                        axios.post('/api/Admin/EditStock',data).then((res) => {
+                        axios.post('/Admin/EditStock',data).then((res) => {
                             if(res.status === 200){
-                                axios.get('/api/Admin/Stock').then((res) => {
+                                axios.get('/Admin/Stock').then((res) => {
                                     if (res.status === 200) {
                                         setTableData(res.data);
                                     }
@@ -179,7 +179,7 @@ export default function Sales() {
         data.append('StockID',ids);
         axios.post('api/Admin/DeleteStock',data).then((res) => {
             if(res.status === 200){
-                axios.get('/api/Admin/Stock').then((res) => {
+                axios.get('/Admin/Stock').then((res) => {
                     if (res.status === 200) {
                         setTableData(res.data);
                     }
@@ -222,9 +222,9 @@ export default function Sales() {
                 data.append('StockPrice',("RM " + $('#Admin_StockPrice').val() + "/" + $('#Admin_StockMeasure').val()))
                 data.append('StockDate',$('#Admin_StockDate').val() as string)
 
-                axios.post('/api/Admin/AddStock',data).then((res) => {
+                axios.post('/Admin/AddStock',data).then((res) => {
                     if(res.status === 200){
-                        axios.get('/api/Admin/Stock').then((res) => {
+                        axios.get('/Admin/Stock').then((res) => {
                             if (res.status === 200) {
                                 setTableData(res.data);
                             }

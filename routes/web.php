@@ -28,8 +28,8 @@ Route::get('/AboutUs', function () {
 });
 
 
-Route::post('/api/Login', [UserController::class, "login"]);
-Route::get('/api/Logout', [UserController::class, "logout"]);
+Route::post('/Login', [UserController::class, "login"]);
+Route::get('/Logout', [UserController::class, "logout"]);
 Route::get('/Category', [ProductController::class, "getCategory"]);
 Route::get('/Product', [ProductController::class, "getProduct"]);
 Route::post('/Payment', [CustomerController::class, "addCustomerOrder"]);
@@ -47,25 +47,25 @@ Route::middleware(CheckPermission::class)->group(function () {
     Route::get('/AdminProduct', function () {
         return Inertia::render('Admin/Product');
     })->name('AdminProduct');
-    Route::get('/api/Admin/Products', [ProductController::class, "getProduct"]);
-    Route::get('/api/Admin/Category', [ProductController::class, "getCategory"]);
-    Route::get('/api/Admin/Sales', [SalesController::class, "getSales"]);
-    Route::get('/api/Admin/Stock', [StockController::class, "getStock"]);
-    Route::get('/api/Admin/Profit', [ProductController::class, "getProductProfit"]);
-    Route::get('/api/Admin/Stats', [ProductController::class, "getStats"]);
-    Route::post('/api/Admin/ChangePass', [UserController::class, "changePassword"]);
-    Route::get('/api/Admin/Overview', [ProductController::class, "getOverview"]);
-    Route::post('/api/Admin/DeleteSales', [SalesController::class, "deleteSales"]);
-    Route::post('/api/Admin/SuccessSales', [SalesController::class, "successSales"]);
-    Route::post('/api/Admin/FailedSales', [SalesController::class, "failedSales"]);
-    Route::post('/api/Admin/AddProduct', [ProductController::class, "addProduct"]);
-    Route::post('/api/Admin/AddStock', [StockController::class, "addStock"]);
-    Route::post('/api/Admin/EditStock', [StockController::class, "editStock"]);
-    Route::post('/api/Admin/SearchStock', [StockController::class, "searchStock"]);
-    Route::post('/api/Admin/DeleteStock', [StockController::class, "deleteStock"]);
-    Route::post('/api/Admin/DeleteProduct', [ProductController::class, "deleteProduct"]);
-    Route::post('/api/Admin/SearchProduct', [ProductController::class, "searchProduct"]);
-    Route::post('/api/Admin/EditProduct', [ProductController::class, "editProduct"]);
+    Route::get('/Admin/Products', [ProductController::class, "getProduct"]);
+    Route::get('/Admin/Category', [ProductController::class, "getCategory"]);
+    Route::get('/Admin/Sales', [SalesController::class, "getSales"]);
+    Route::get('/Admin/Stock', [StockController::class, "getStock"]);
+    Route::get('/Admin/Profit', [ProductController::class, "getProductProfit"]);
+    Route::get('/Admin/Stats', [ProductController::class, "getStats"]);
+    Route::post('/Admin/ChangePass', [UserController::class, "changePassword"]);
+    Route::get('/Admin/Overview', [ProductController::class, "getOverview"]);
+    Route::post('/Admin/DeleteSales', [SalesController::class, "deleteSales"]);
+    Route::post('/Admin/SuccessSales', [SalesController::class, "successSales"]);
+    Route::post('/Admin/FailedSales', [SalesController::class, "failedSales"]);
+    Route::post('/Admin/AddProduct', [ProductController::class, "addProduct"]);
+    Route::post('/Admin/AddStock', [StockController::class, "addStock"]);
+    Route::post('/Admin/EditStock', [StockController::class, "editStock"]);
+    Route::post('/Admin/SearchStock', [StockController::class, "searchStock"]);
+    Route::post('/Admin/DeleteStock', [StockController::class, "deleteStock"]);
+    Route::post('/Admin/DeleteProduct', [ProductController::class, "deleteProduct"]);
+    Route::post('/Admin/SearchProduct', [ProductController::class, "searchProduct"]);
+    Route::post('/Admin/EditProduct', [ProductController::class, "editProduct"]);
 });
 
 
@@ -73,7 +73,7 @@ Route::get('/ContactForm', function () {
     return Inertia::render('ContactForm');
 });
 
-Route::post('api/ContactForm', [FeedbackController::class, 'store']);
+Route::post('/Feedback', [FeedbackController::class, 'store']);
 
 Route::get('/Menu', function () {
     return Inertia::render('Menu');
@@ -87,11 +87,11 @@ Route::get('/Payment', function () {
     return Inertia::render('Payment');
 })->name('Payment');
 
-Route::post('/api/send-email', [MailController::class, 'sendEmail']);
+Route::post('/send-email', [MailController::class, 'sendEmail']);
 
 Route::get('/OrderTracking', function () {
     return Inertia::render('OrderTracking');
 });
-Route::get('/api/Admin/Sales', [SalesController::class, "getSales"]);
+Route::get('/Admin/Sales', [SalesController::class, "getSales"]);
 
 require __DIR__ . '/auth.php';

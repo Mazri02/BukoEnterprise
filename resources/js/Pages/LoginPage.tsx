@@ -8,7 +8,7 @@ export default function Dashboard() {
         const data = new FormData();
         data.append('Username',$('#Admin_Username').val() as string)
         data.append('Userpass',$('#Admin_Password').val() as string)
-        axios.post('/api/Login',data).then((res) => {
+        axios.post('/Login',data).then((res) => {
             if(res.status === 200){
                if(res.data.stats == 200){
                 window.location.href = route('AdminOverview');

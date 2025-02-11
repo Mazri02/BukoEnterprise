@@ -13,13 +13,13 @@ export default function Sales() {
 
     useEffect(() => {
         if(Category === undefined) {
-            axios.get('/api/Admin/Category').then((res) => {
+            axios.get('/Admin/Category').then((res) => {
                 if (res.status === 200) {
                     SetCategory(res.data);
                 }
             });
 
-            axios.get('/api/Admin/Products').then((res) => {
+            axios.get('/Admin/Products').then((res) => {
                 if (res.status === 200) {
                     SetItem(res.data);
                 }
@@ -72,7 +72,7 @@ export default function Sales() {
         data.append('ProductID',ids);
         axios.post('api/Admin/DeleteProduct',data).then((res) => {
             if(res.status === 200){
-                axios.get('/api/Admin/Products').then((res) => {
+                axios.get('/Admin/Products').then((res) => {
                     if (res.status === 200) {
                         SetItem(res.data);
                     }
@@ -116,9 +116,9 @@ export default function Sales() {
                 data.append('ProductStock',$('#Admin_ProductStock').val() as string)
                 data.append('ProductCategory', category)
 
-                axios.post('/api/Admin/AddProduct',data).then((res) => {
+                axios.post('/Admin/AddProduct',data).then((res) => {
                     if(res.status === 200){
-                        axios.get('/api/Admin/Products').then((res) => {
+                        axios.get('/Admin/Products').then((res) => {
                             if (res.status === 200) {
                                 SetItem(res.data);
                             }
@@ -146,7 +146,7 @@ export default function Sales() {
     const ProductEdit = (ids:any,category:any) => {
         const data = new FormData()
         data.append('ProductID',ids)
-        axios.post('/api/Admin/SearchProduct',data).then((res) => {
+        axios.post('/Admin/SearchProduct',data).then((res) => {
             if(res.status === 200){
                 Swal.fire({
                     title: "Update Product " + res.data.ProductName,
@@ -169,9 +169,9 @@ export default function Sales() {
                         data.append('ProductCategory', category)
                         data.append('ProductID', ids)
         
-                        axios.post('/api/Admin/EditProduct',data).then((res) => {
+                        axios.post('/Admin/EditProduct',data).then((res) => {
                             if(res.status === 200){
-                                axios.get('/api/Admin/Products').then((res) => {
+                                axios.get('/Admin/Products').then((res) => {
                                     if (res.status === 200) {
                                         SetItem(res.data);
                                     }

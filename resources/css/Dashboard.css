@@ -13,10 +13,15 @@
     padding: 1em 0;
 }
 
+#app { 
+    height: 45em;
+}
+
 .ContFull {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-between;
+    height: 100%;
 }
 
 .ContentInside {

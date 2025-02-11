@@ -93,8 +93,8 @@ export default function Sales() {
     const FailedSuccess = (ids:any) => {
         const data = new FormData();
         data.append('CustomerID',ids);
-        axios.post('/api/Admin/FailedSales',data).then((res) => {
-            axios.get('/api/Admin/Sales').then((res) => {
+        axios.post('/Admin/FailedSales',data).then((res) => {
+            axios.get('/Admin/Sales').then((res) => {
                 if (res.status === 200) {
                     setTableData(res.data);
                 }
@@ -119,8 +119,8 @@ export default function Sales() {
     const UpdateSuccess = (ids:any) => {
         const data = new FormData();
         data.append('CustomerID',ids);
-        axios.post('/api/Admin/SuccessSales',data).then((res) => {
-            axios.get('/api/Admin/Sales').then((res) => {
+        axios.post('/Admin/SuccessSales',data).then((res) => {
+            axios.get('/Admin/Sales').then((res) => {
                 if (res.status === 200) {
                     setTableData(res.data);
                 }
@@ -143,7 +143,7 @@ export default function Sales() {
     }
 
     useEffect(() => {
-        axios.get('/api/Admin/Sales').then((res) => {
+        axios.get('/Admin/Sales').then((res) => {
             if (res.status === 200) {
                 setTableData(res.data);
             }
@@ -165,8 +165,8 @@ export default function Sales() {
     const handleDelete = (ids:any) => {
         const data = new FormData();
         data.append('CustomerID',ids);
-        axios.post('/api/Admin/DeleteSales',data).then((res) => {
-            axios.get('/api/Admin/Sales').then((res) => {
+        axios.post('/Admin/DeleteSales',data).then((res) => {
+            axios.get('/Admin/Sales').then((res) => {
                 if (res.status === 200) {
                     setTableData(res.data);
                 }
