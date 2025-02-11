@@ -49,7 +49,7 @@
 
         "MAIL_MAILER": "smtp",
         "MAIL_HOST": "smtp.gmail.com",
-        "MAIL_PORT": 587,
+        "MAIL_PORT": "587",
         "MAIL_USERNAME": "2023607666@student.uitm.edu.my",
         "MAIL_PASSWORD": "okef bpkc rrpg gcdw",
         "MAIL_ENCRYPTION": "tls",
