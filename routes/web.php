@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\SalesController;
@@ -72,6 +73,7 @@ Route::get('/ContactForm', function () {
     return Inertia::render('ContactForm');
 });
 
+Route::post('api/ContactForm', [FeedbackController::class, 'store']);
 
 Route::get('/Menu', function () {
     return Inertia::render('Menu');
