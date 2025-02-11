@@ -16,26 +16,25 @@
 
 
 -- Dumping database structure for bukoenterprise
-CREATE DATABASE IF NOT EXISTS `bukoenterprise` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
-USE `bukoenterprise`;
+USE `sql12762117`;
 
 -- Dumping structure for table bukoenterprise.cache
 CREATE TABLE IF NOT EXISTS `cache` (
-  `key` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `value` mediumtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `key` varchar(191)  NOT NULL,
+  `value` mediumtext  NOT NULL,
   `expiration` int NOT NULL,
   PRIMARY KEY (`key`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ;
 
 -- Dumping data for table bukoenterprise.cache: ~0 rows (approximately)
 
 -- Dumping structure for table bukoenterprise.cache_locks
 CREATE TABLE IF NOT EXISTS `cache_locks` (
-  `key` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `owner` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `key` varchar(191)  NOT NULL,
+  `owner` varchar(191)  NOT NULL,
   `expiration` int NOT NULL,
   PRIMARY KEY (`key`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ;
 
 -- Dumping data for table bukoenterprise.cache_locks: ~0 rows (approximately)
 
@@ -50,7 +49,7 @@ CREATE TABLE IF NOT EXISTS `customer` (
   `CustomerCity` varchar(50) DEFAULT NULL,
   `CustomerPayment` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`CustomerID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+);
 
 -- Dumping data for table bukoenterprise.customer: ~30 rows (approximately)
 REPLACE INTO `customer` (`CustomerID`, `CustomerPhone`, `CustomerEmail`, `CustomerAddress1`, `CustomerAddress2`, `CustomerPostcode`, `CustomerCity`, `CustomerPayment`) VALUES
@@ -88,57 +87,71 @@ REPLACE INTO `customer` (`CustomerID`, `CustomerPhone`, `CustomerEmail`, `Custom
 -- Dumping structure for table bukoenterprise.failed_jobs
 CREATE TABLE IF NOT EXISTS `failed_jobs` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `uuid` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `connection` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `queue` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `uuid` varchar(191)  NOT NULL,
+  `connection` text  NOT NULL,
+  `queue` text  NOT NULL,
+  `payload` longtext  NOT NULL,
+  `exception` longtext  NOT NULL,
   `failed_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ;
 
 -- Dumping data for table bukoenterprise.failed_jobs: ~0 rows (approximately)
+
+-- Dumping structure for table bukoenterprise.feedback
+CREATE TABLE IF NOT EXISTS `feedback` (
+  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `first_name` varchar(50) DEFAULT NULL,
+  `last_name` varchar(50) DEFAULT NULL,
+  `email` varchar(50) DEFAULT NULL,
+  `message` varchar(50) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+);
+
+-- Dumping data for table bukoenterprise.feedback: ~0 rows (approximately)
 
 -- Dumping structure for table bukoenterprise.jobs
 CREATE TABLE IF NOT EXISTS `jobs` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `queue` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `queue` varchar(191)  NOT NULL,
+  `payload` longtext  NOT NULL,
   `attempts` tinyint unsigned NOT NULL,
   `reserved_at` int unsigned DEFAULT NULL,
   `available_at` int unsigned NOT NULL,
   `created_at` int unsigned NOT NULL,
   PRIMARY KEY (`id`),
   KEY `jobs_queue_index` (`queue`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ;
 
 -- Dumping data for table bukoenterprise.jobs: ~0 rows (approximately)
 
 -- Dumping structure for table bukoenterprise.job_batches
 CREATE TABLE IF NOT EXISTS `job_batches` (
-  `id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id` varchar(191)  NOT NULL,
+  `name` varchar(191)  NOT NULL,
   `total_jobs` int NOT NULL,
   `pending_jobs` int NOT NULL,
   `failed_jobs` int NOT NULL,
-  `failed_job_ids` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `options` mediumtext COLLATE utf8mb4_unicode_ci,
+  `failed_job_ids` longtext  NOT NULL,
+  `options` mediumtext ,
   `cancelled_at` int DEFAULT NULL,
   `created_at` int NOT NULL,
   `finished_at` int DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ;
 
 -- Dumping data for table bukoenterprise.job_batches: ~0 rows (approximately)
 
 -- Dumping structure for table bukoenterprise.migrations
 CREATE TABLE IF NOT EXISTS `migrations` (
   `id` int unsigned NOT NULL AUTO_INCREMENT,
-  `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `migration` varchar(191)  NOT NULL,
   `batch` int NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+);
 
 -- Dumping data for table bukoenterprise.migrations: ~0 rows (approximately)
 REPLACE INTO `migrations` (`id`, `migration`, `batch`) VALUES
@@ -146,20 +159,150 @@ REPLACE INTO `migrations` (`id`, `migration`, `batch`) VALUES
 	(2, '0001_01_01_000001_create_cache_table', 1),
 	(3, '0001_01_01_000002_create_jobs_table', 1);
 
+-- Dumping structure for table bukoenterprise.products
+CREATE TABLE IF NOT EXISTS `products` (
+  `ProductID` int NOT NULL AUTO_INCREMENT,
+  `ProductImage` varchar(50) DEFAULT NULL,
+  `ProductName` varchar(50) DEFAULT NULL,
+  `ProductCategory` varchar(50) DEFAULT NULL,
+  `ProductPrice` float DEFAULT NULL,
+  `ProductIngredient` varchar(50) DEFAULT NULL,
+  `ProductStock` int DEFAULT NULL,
+  PRIMARY KEY (`ProductID`)
+);
+
+-- Dumping data for table bukoenterprise.products: ~52 rows (approximately)
+REPLACE INTO `products` (`ProductID`, `ProductImage`, `ProductName`, `ProductCategory`, `ProductPrice`, `ProductIngredient`, `ProductStock`) VALUES
+	(2000, 'https://picsum.photos/200/300', 'Buko Pandan', 'Buko', 6, 'Tepung Gandum, Susu Cair, Gula, Kacang', 150),
+	(2001, 'https://picsum.photos/200/300', 'Chocolate Cake', 'Cakes', 8, 'Tepung Gandum, Susu, Coklat, Gula', 120),
+	(2002, 'https://picsum.photos/200/300', 'Banana Chips', 'Snack', 5, 'Pisang, Minyak, Garam, Gula', 200),
+	(2003, 'https://picsum.photos/200/300', 'Fruit Salad', 'Salad', 7, 'Buah Campuran, Susu, Gula, Madu', 90),
+	(2004, 'https://picsum.photos/200/300', 'Buko Laici', 'Buko', 6, 'Tepung Gandum, Susu Cair, Gula, Lychee', 140),
+	(2005, 'https://picsum.photos/200/300', 'Red Velvet Cake', 'Cakes', 9, 'Tepung Gandum, Susu, Pewarna, Gula', 110),
+	(2006, 'https://picsum.photos/200/300', 'Potato Chips', 'Snack', 5, 'Kentang, Minyak, Garam, Paprika', 220),
+	(2007, 'https://picsum.photos/200/300', 'Green Salad', 'Salad', 7, 'Selada, Timun, Tomat, Wortel', 80),
+	(2008, 'https://picsum.photos/200/300', 'Buko Ube', 'Buko', 6, 'Tepung Gandum, Susu Cair, Gula, Ube', 130),
+	(2009, 'https://picsum.photos/200/300', 'Cheese Cake', 'Cakes', 10, 'Tepung Gandum, Susu, Keju, Gula', 100),
+	(2010, 'https://picsum.photos/200/300', 'Popcorn', 'Snack', 5, 'Jagung, Minyak, Garam, Mentega', 210),
+	(2011, 'https://picsum.photos/200/300', 'Chicken Salad', 'Salad', 8, 'Ayam, Selada, Tomat, Saus', 70),
+	(2012, 'https://picsum.photos/200/300', 'Buko Gula Melaka', 'Buko', 6, 'Tepung Gandum, Susu Cair, Gula Melaka, Kelapa', 160),
+	(2013, 'https://picsum.photos/200/300', 'Mango Cake', 'Cakes', 8, 'Tepung Gandum, Susu, Mangga, Gula', 125),
+	(2014, 'https://picsum.photos/200/300', 'Pretzels', 'Snack', 4, 'Tepung Gandum, Garam, Minyak, Gula', 230),
+	(2015, 'https://picsum.photos/200/300', 'Caesar Salad', 'Salad', 8, 'Selada, Keju, Roti Panggang, Saus Caesar', 85),
+	(2016, 'https://picsum.photos/200/300', 'Buko Chocolate', 'Buko', 6, 'Tepung Gandum, Susu Cair, Gula, Coklat', 170),
+	(2017, 'https://picsum.photos/200/300', 'Tiramisu', 'Cakes', 9, 'Tepung Gandum, Kopi, Susu, Gula', 105),
+	(2018, 'https://picsum.photos/200/300', 'Nuts Mix', 'Snack', 6, 'Kacang Campuran, Garam, Minyak, Gula', 190),
+	(2019, 'https://picsum.photos/200/300', 'Pasta Salad', 'Salad', 7, 'Pasta, Selada, Tomat, Saus Italian', 95),
+	(2020, 'https://picsum.photos/200/300', 'Buko Mango', 'Buko', 6, 'Tepung Gandum, Susu Cair, Gula, Mangga', 155),
+	(2021, 'https://picsum.photos/200/300', 'Carrot Cake', 'Cakes', 8, 'Tepung Gandum, Wortel, Susu, Gula', 130),
+	(2022, 'https://picsum.photos/200/300', 'Granola Bars', 'Snack', 5, 'Oat, Madu, Kacang, Gula', 200),
+	(2023, 'https://picsum.photos/200/300', 'Seafood Salad', 'Salad', 9, 'Udang, Selada, Tomat, Saus', 75),
+	(2024, 'https://picsum.photos/200/300', 'Buko Corn', 'Buko', 6, 'Tepung Gandum, Susu Cair, Gula, Jagung', 140),
+	(2025, 'https://picsum.photos/200/300', 'Lemon Cake', 'Cakes', 8, 'Tepung Gandum, Lemon, Susu, Gula', 115),
+	(2026, 'https://picsum.photos/200/300', 'Trail Mix', 'Snack', 5, 'Kacang, Buah Kering, Coklat, Gula', 210),
+	(2027, 'https://picsum.photos/200/300', 'Quinoa Salad', 'Salad', 8, 'Quinoa, Selada, Tomat, Saus Mustard', 85),
+	(2028, 'https://picsum.photos/200/300', 'Buko Melon', 'Buko', 6, 'Tepung Gandum, Susu Cair, Gula, Melon', 145),
+	(2029, 'https://picsum.photos/200/300', 'Strawberry Cake', 'Cakes', 9, 'Tepung Gandum, Stroberi, Susu, Gula', 110),
+	(2030, 'https://picsum.photos/200/300', 'Rice Crackers', 'Snack', 4, 'Beras, Garam, Minyak, Gula', 220),
+	(2031, 'https://picsum.photos/200/300', 'Buko Taro', 'Buko', 6, 'Tepung Gandum, Susu Cair, Gula, Taro', 150),
+	(2032, 'https://picsum.photos/200/300', 'Chocolate Muffin', 'Cakes', 8, 'Tepung Gandum, Coklat, Susu, Gula', 120),
+	(2033, 'https://picsum.photos/200/300', 'Cassava Chips', 'Snack', 5, 'Singkong, Minyak, Garam, Cabai', 200),
+	(2034, 'https://picsum.photos/200/300', 'Tropical Salad', 'Salad', 7, 'Buah Tropis, Selada, Susu, Madu', 90),
+	(2035, 'https://picsum.photos/200/300', 'Buko Sweet Potato', 'Buko', 6, 'Tepung Gandum, Susu Cair, Gula, Ubi', 140),
+	(2036, 'https://picsum.photos/200/300', 'Vanilla Cake', 'Cakes', 9, 'Tepung Gandum, Susu, Vanilla, Gula', 110),
+	(2037, 'https://picsum.photos/200/300', 'Corn Chips', 'Snack', 5, 'Jagung, Minyak, Garam, Paprika', 220),
+	(2038, 'https://picsum.photos/200/300', 'Greek Salad', 'Salad', 7, 'Selada, Timun, Tomat, Keju', 80),
+	(2039, 'https://picsum.photos/200/300', 'Buko Strawberry', 'Buko', 6, 'Tepung Gandum, Susu Cair, Gula, Stroberi', 130),
+	(2040, 'https://picsum.photos/200/300', 'Butter Cake', 'Cakes', 10, 'Tepung Gandum, Mentega, Susu, Gula', 100),
+	(2041, 'https://picsum.photos/200/300', 'Tortilla Chips', 'Snack', 5, 'Tepung Jagung, Minyak, Garam, Cabai', 210),
+	(2042, 'https://picsum.photos/200/300', 'Kale Salad', 'Salad', 8, 'Kale, Tomat, Keju, Saus', 70),
+	(2043, 'https://picsum.photos/200/300', 'Buko Mango Sticky Rice', 'Buko', 6, 'Tepung Gandum, Susu Cair, Gula, Pulut', 160),
+	(2044, 'https://picsum.photos/200/300', 'Coconut Cake', 'Cakes', 8, 'Tepung Gandum, Kelapa, Susu, Gula', 125),
+	(2045, 'https://picsum.photos/200/300', 'Peanut Brittle', 'Snack', 4, 'Kacang, Gula, Garam, Mentega', 230),
+	(2046, 'https://picsum.photos/200/300', 'Apple Salad', 'Salad', 8, 'Apel, Selada, Kacang, Madu', 85),
+	(2047, 'https://picsum.photos/200/300', 'Buko Langka', 'Buko', 7, 'Tepung Gandum, Susu Cair, Gula, Nangka', 170),
+	(2048, 'https://picsum.photos/200/300', 'Blueberry Cake', 'Cakes', 9, 'Tepung Gandum, Blueberry, Susu, Gula', 105),
+	(2049, 'https://picsum.photos/200/300', 'Veggie Chips', 'Snack', 6, 'Sayuran, Minyak, Garam, Paprika', 190),
+	(2050, 'https://picsum.photos/200/300', 'Avocado Salad', 'Salad', 7, 'Alpukat, Selada, Tomat, Saus', 95);
+
+-- Dumping structure for table bukoenterprise.sessions
+CREATE TABLE IF NOT EXISTS `sessions` (
+  `id` varchar(191)  NOT NULL,
+  `user_id` bigint unsigned DEFAULT NULL,
+  `ip_address` varchar(45)  DEFAULT NULL,
+  `user_agent` text ,
+  `payload` longtext  NOT NULL,
+  `last_activity` int NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `sessions_user_id_index` (`user_id`),
+  KEY `sessions_last_activity_index` (`last_activity`)
+) ;
+
+-- Dumping data for table bukoenterprise.sessions: ~1 rows (approximately)
+REPLACE INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
+	('jNJhGTabCxiYXYdfjaiiHTKMytGp58U8jR9J1XM2', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoidTZYSkc1SmZPZ2ZMWFFRNUs2REhLZ3pHVUFIMEJFbkFUMndOTmVMZiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzI6Imh0dHA6Ly9sb2NhbGhvc3Q6ODAwMC9BZG1pblNhbGVzIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo1OiJ0b2tlbiI7aToxMDAwO30=', 1734712095);
+
+-- Dumping structure for table bukoenterprise.stock
+CREATE TABLE IF NOT EXISTS `stock` (
+  `StockID` int NOT NULL AUTO_INCREMENT,
+  `StockNumber` int DEFAULT NULL,
+  `StockSupplier` varchar(50) DEFAULT NULL,
+  `StockPrice` varchar(50) DEFAULT NULL,
+  `StockItem` varchar(50) DEFAULT NULL,
+  `StockDate` date DEFAULT NULL,
+  PRIMARY KEY (`StockID`)
+);
+
+-- Dumping data for table bukoenterprise.stock: ~18 rows (approximately)
+REPLACE INTO `stock` (`StockID`, `StockNumber`, `StockSupplier`, `StockPrice`, `StockItem`, `StockDate`) VALUES
+	(3000, 150, 'Ah Hock Enterprise', 'RM16.0/pkt', 'Tepung Gandum', '2024-12-19'),
+	(3001, 200, 'Meow Restock Berhad', 'RM 5.0/g', 'Susu Cair', '2024-12-18'),
+	(3002, 300, 'Kedai Underground Klang', 'RM 7.5/kg', 'Gula', '2024-12-17'),
+	(3003, 400, 'Abatu Warehouse', 'RM 2.5/ml', 'Minyak Masak', '2024-12-16'),
+	(3004, 180, 'Ah Hock Enterprise', 'RM 4.0/pkt', 'Pewarna Makanan', '2024-12-15'),
+	(3007, 450, 'Abatu Warehouse', 'RM 1.5/ml', 'Coklat Cair', '2024-12-12'),
+	(3008, 170, 'Ah Hock Enterprise', 'RM 5.5/pkt', 'Buah Kering', '2024-12-11'),
+	(3009, 260, 'Meow Restock Berhad', 'RM 2.0/g', 'Kacang Campuran', '2024-12-10'),
+	(3010, 360, 'Kedai Underground Klang', 'RM 4.5/kg', 'Selada', '2024-12-09'),
+	(3011, 470, 'Abatu Warehouse', 'RM 3.5/ml', 'Tomat', '2024-12-08'),
+	(3012, 190, 'Ah Hock Enterprise', 'RM 6.0/pkt', 'Jagung Manis', '2024-12-07'),
+	(3013, 270, 'Meow Restock Berhad', 'RM 4.0/g', 'Kacang Hijau', '2024-12-06'),
+	(3014, 370, 'Kedai Underground Klang', 'RM 7.0/kg', 'Beras', '2024-12-05'),
+	(3015, 480, 'Abatu Warehouse', 'RM 2.5/ml', 'Minyak Zaitun', '2024-12-04'),
+	(3016, 160, 'Ah Hock Enterprise', 'RM 5.0/pkt', 'Mangga Kering', '2024-12-03'),
+	(3017, 240, 'Meow Restock Berhad', 'RM 3.5/g', 'Kacang Almond', '2024-12-02'),
+	(3018, 330, 'Kedai Underground Klang', 'RM 6.5/kg', 'Wortel', '2024-12-01'),
+	(3019, 450, 'Abatu Warehouse', 'RM 4.5/ml', 'Saus Salad', '2024-11-30');
+
+-- Dumping structure for table bukoenterprise.users
+CREATE TABLE IF NOT EXISTS `users` (
+  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(191)  NOT NULL,
+  `email` varchar(191)  NOT NULL,
+  `password` varchar(191)  NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `users_email_unique` (`email`)
+);
+
+-- Dumping data for table bukoenterprise.users: ~0 rows (approximately)
+REPLACE INTO `users` (`id`, `name`, `email`, `password`) VALUES
+	(1000, 'admin', 'admin@buko.com', '240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9');
+
+
 -- Dumping structure for table bukoenterprise.order
 CREATE TABLE IF NOT EXISTS `order` (
   `OrderID` int NOT NULL AUTO_INCREMENT,
   `ProductID` int DEFAULT NULL,
   `CustomerID` int NOT NULL,
   `OrderDate` date DEFAULT NULL,
-  `OrderStatus` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `OrderStatus` varchar(50) DEFAULT NULL,
   `OrderQuantity` int DEFAULT NULL,
   PRIMARY KEY (`OrderID`),
   KEY `CustomerID` (`CustomerID`),
   KEY `ProductID` (`ProductID`),
   CONSTRAINT `CustomerID` FOREIGN KEY (`CustomerID`) REFERENCES `customer` (`CustomerID`),
   CONSTRAINT `ProductID` FOREIGN KEY (`ProductID`) REFERENCES `products` (`ProductID`)
-) ENGINE=InnoDB AUTO_INCREMENT=4071 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+);
 
 -- Dumping data for table bukoenterprise.order: ~71 rows (approximately)
 REPLACE INTO `order` (`OrderID`, `ProductID`, `CustomerID`, `OrderDate`, `OrderStatus`, `OrderQuantity`) VALUES
@@ -232,135 +375,6 @@ REPLACE INTO `order` (`OrderID`, `ProductID`, `CustomerID`, `OrderDate`, `OrderS
 	(4068, 2017, 1008, '2024-12-27', 'Failed', 2),
 	(4069, 2018, 1009, '2024-12-28', 'Pending', 3),
 	(4070, 2019, 1010, '2024-12-19', 'Pending', 3);
-
--- Dumping structure for table bukoenterprise.products
-CREATE TABLE IF NOT EXISTS `products` (
-  `ProductID` int NOT NULL AUTO_INCREMENT,
-  `ProductImage` varchar(50) DEFAULT NULL,
-  `ProductName` varchar(50) DEFAULT NULL,
-  `ProductCategory` varchar(50) DEFAULT NULL,
-  `ProductPrice` float DEFAULT NULL,
-  `ProductIngredient` varchar(50) DEFAULT NULL,
-  `ProductStock` int DEFAULT NULL,
-  PRIMARY KEY (`ProductID`)
-) ENGINE=InnoDB AUTO_INCREMENT=2056 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
--- Dumping data for table bukoenterprise.products: ~51 rows (approximately)
-REPLACE INTO `products` (`ProductID`, `ProductImage`, `ProductName`, `ProductCategory`, `ProductPrice`, `ProductIngredient`, `ProductStock`) VALUES
-	(2000, 'https://picsum.photos/200/300', 'Buko Pandan', 'Buko', 6, 'Tepung Gandum, Susu Cair, Gula, Kacang', 150),
-	(2001, 'https://picsum.photos/200/300', 'Chocolate Cake', 'Cakes', 8, 'Tepung Gandum, Susu, Coklat, Gula', 120),
-	(2002, 'https://picsum.photos/200/300', 'Banana Chips', 'Snack', 5, 'Pisang, Minyak, Garam, Gula', 200),
-	(2003, 'https://picsum.photos/200/300', 'Fruit Salad', 'Salad', 7, 'Buah Campuran, Susu, Gula, Madu', 90),
-	(2004, 'https://picsum.photos/200/300', 'Buko Laici', 'Buko', 6, 'Tepung Gandum, Susu Cair, Gula, Lychee', 140),
-	(2005, 'https://picsum.photos/200/300', 'Red Velvet Cake', 'Cakes', 9, 'Tepung Gandum, Susu, Pewarna, Gula', 110),
-	(2006, 'https://picsum.photos/200/300', 'Potato Chips', 'Snack', 5, 'Kentang, Minyak, Garam, Paprika', 220),
-	(2007, 'https://picsum.photos/200/300', 'Green Salad', 'Salad', 7, 'Selada, Timun, Tomat, Wortel', 80),
-	(2008, 'https://picsum.photos/200/300', 'Buko Ube', 'Buko', 6, 'Tepung Gandum, Susu Cair, Gula, Ube', 130),
-	(2009, 'https://picsum.photos/200/300', 'Cheese Cake', 'Cakes', 10, 'Tepung Gandum, Susu, Keju, Gula', 100),
-	(2010, 'https://picsum.photos/200/300', 'Popcorn', 'Snack', 5, 'Jagung, Minyak, Garam, Mentega', 210),
-	(2011, 'https://picsum.photos/200/300', 'Chicken Salad', 'Salad', 8, 'Ayam, Selada, Tomat, Saus', 70),
-	(2012, 'https://picsum.photos/200/300', 'Buko Gula Melaka', 'Buko', 6, 'Tepung Gandum, Susu Cair, Gula Melaka, Kelapa', 160),
-	(2013, 'https://picsum.photos/200/300', 'Mango Cake', 'Cakes', 8, 'Tepung Gandum, Susu, Mangga, Gula', 125),
-	(2014, 'https://picsum.photos/200/300', 'Pretzels', 'Snack', 4, 'Tepung Gandum, Garam, Minyak, Gula', 230),
-	(2015, 'https://picsum.photos/200/300', 'Caesar Salad', 'Salad', 8, 'Selada, Keju, Roti Panggang, Saus Caesar', 85),
-	(2016, 'https://picsum.photos/200/300', 'Buko Chocolate', 'Buko', 6, 'Tepung Gandum, Susu Cair, Gula, Coklat', 170),
-	(2017, 'https://picsum.photos/200/300', 'Tiramisu', 'Cakes', 9, 'Tepung Gandum, Kopi, Susu, Gula', 105),
-	(2018, 'https://picsum.photos/200/300', 'Nuts Mix', 'Snack', 6, 'Kacang Campuran, Garam, Minyak, Gula', 190),
-	(2019, 'https://picsum.photos/200/300', 'Pasta Salad', 'Salad', 7, 'Pasta, Selada, Tomat, Saus Italian', 95),
-	(2020, 'https://picsum.photos/200/300', 'Buko Mango', 'Buko', 6, 'Tepung Gandum, Susu Cair, Gula, Mangga', 155),
-	(2021, 'https://picsum.photos/200/300', 'Carrot Cake', 'Cakes', 8, 'Tepung Gandum, Wortel, Susu, Gula', 130),
-	(2022, 'https://picsum.photos/200/300', 'Granola Bars', 'Snack', 5, 'Oat, Madu, Kacang, Gula', 200),
-	(2023, 'https://picsum.photos/200/300', 'Seafood Salad', 'Salad', 9, 'Udang, Selada, Tomat, Saus', 75),
-	(2024, 'https://picsum.photos/200/300', 'Buko Corn', 'Buko', 6, 'Tepung Gandum, Susu Cair, Gula, Jagung', 140),
-	(2025, 'https://picsum.photos/200/300', 'Lemon Cake', 'Cakes', 8, 'Tepung Gandum, Lemon, Susu, Gula', 115),
-	(2026, 'https://picsum.photos/200/300', 'Trail Mix', 'Snack', 5, 'Kacang, Buah Kering, Coklat, Gula', 210),
-	(2027, 'https://picsum.photos/200/300', 'Quinoa Salad', 'Salad', 8, 'Quinoa, Selada, Tomat, Saus Mustard', 85),
-	(2028, 'https://picsum.photos/200/300', 'Buko Melon', 'Buko', 6, 'Tepung Gandum, Susu Cair, Gula, Melon', 145),
-	(2029, 'https://picsum.photos/200/300', 'Strawberry Cake', 'Cakes', 9, 'Tepung Gandum, Stroberi, Susu, Gula', 110),
-	(2030, 'https://picsum.photos/200/300', 'Rice Crackers', 'Snack', 4, 'Beras, Garam, Minyak, Gula', 220),
-	(2031, 'https://picsum.photos/200/300', 'Buko Taro', 'Buko', 6, 'Tepung Gandum, Susu Cair, Gula, Taro', 150),
-	(2032, 'https://picsum.photos/200/300', 'Chocolate Muffin', 'Cakes', 8, 'Tepung Gandum, Coklat, Susu, Gula', 120),
-	(2033, 'https://picsum.photos/200/300', 'Cassava Chips', 'Snack', 5, 'Singkong, Minyak, Garam, Cabai', 200),
-	(2034, 'https://picsum.photos/200/300', 'Tropical Salad', 'Salad', 7, 'Buah Tropis, Selada, Susu, Madu', 90),
-	(2035, 'https://picsum.photos/200/300', 'Buko Sweet Potato', 'Buko', 6, 'Tepung Gandum, Susu Cair, Gula, Ubi', 140),
-	(2036, 'https://picsum.photos/200/300', 'Vanilla Cake', 'Cakes', 9, 'Tepung Gandum, Susu, Vanilla, Gula', 110),
-	(2037, 'https://picsum.photos/200/300', 'Corn Chips', 'Snack', 5, 'Jagung, Minyak, Garam, Paprika', 220),
-	(2038, 'https://picsum.photos/200/300', 'Greek Salad', 'Salad', 7, 'Selada, Timun, Tomat, Keju', 80),
-	(2039, 'https://picsum.photos/200/300', 'Buko Strawberry', 'Buko', 6, 'Tepung Gandum, Susu Cair, Gula, Stroberi', 130),
-	(2040, 'https://picsum.photos/200/300', 'Butter Cake', 'Cakes', 10, 'Tepung Gandum, Mentega, Susu, Gula', 100),
-	(2041, 'https://picsum.photos/200/300', 'Tortilla Chips', 'Snack', 5, 'Tepung Jagung, Minyak, Garam, Cabai', 210),
-	(2042, 'https://picsum.photos/200/300', 'Kale Salad', 'Salad', 8, 'Kale, Tomat, Keju, Saus', 70),
-	(2043, 'https://picsum.photos/200/300', 'Buko Mango Sticky Rice', 'Buko', 6, 'Tepung Gandum, Susu Cair, Gula, Pulut', 160),
-	(2044, 'https://picsum.photos/200/300', 'Coconut Cake', 'Cakes', 8, 'Tepung Gandum, Kelapa, Susu, Gula', 125),
-	(2045, 'https://picsum.photos/200/300', 'Peanut Brittle', 'Snack', 4, 'Kacang, Gula, Garam, Mentega', 230),
-	(2046, 'https://picsum.photos/200/300', 'Apple Salad', 'Salad', 8, 'Apel, Selada, Kacang, Madu', 85),
-	(2047, 'https://picsum.photos/200/300', 'Buko Langka', 'Buko', 7, 'Tepung Gandum, Susu Cair, Gula, Nangka', 170),
-	(2048, 'https://picsum.photos/200/300', 'Blueberry Cake', 'Cakes', 9, 'Tepung Gandum, Blueberry, Susu, Gula', 105),
-	(2049, 'https://picsum.photos/200/300', 'Veggie Chips', 'Snack', 6, 'Sayuran, Minyak, Garam, Paprika', 190),
-	(2050, 'https://picsum.photos/200/300', 'Avocado Salad', 'Salad', 7, 'Alpukat, Selada, Tomat, Saus', 95);
-
--- Dumping structure for table bukoenterprise.sessions
-CREATE TABLE IF NOT EXISTS `sessions` (
-  `id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `user_id` bigint unsigned DEFAULT NULL,
-  `ip_address` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `user_agent` text COLLATE utf8mb4_unicode_ci,
-  `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `last_activity` int NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `sessions_user_id_index` (`user_id`),
-  KEY `sessions_last_activity_index` (`last_activity`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- Dumping data for table bukoenterprise.sessions: ~3 rows (approximately)
-REPLACE INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-	('jNJhGTabCxiYXYdfjaiiHTKMytGp58U8jR9J1XM2', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoidTZYSkc1SmZPZ2ZMWFFRNUs2REhLZ3pHVUFIMEJFbkFUMndOTmVMZiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzU6Imh0dHA6Ly9sb2NhbGhvc3Q6ODAwMC9BZG1pbk92ZXJ2aWV3Ijt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo1OiJ0b2tlbiI7aToxMDAwO30=', 1734711245);
-
--- Dumping structure for table bukoenterprise.stock
-CREATE TABLE IF NOT EXISTS `stock` (
-  `StockID` int NOT NULL AUTO_INCREMENT,
-  `StockNumber` int DEFAULT NULL,
-  `StockSupplier` varchar(50) DEFAULT NULL,
-  `StockPrice` varchar(50) DEFAULT NULL,
-  `StockItem` varchar(50) DEFAULT NULL,
-  `StockDate` date DEFAULT NULL,
-  PRIMARY KEY (`StockID`)
-) ENGINE=InnoDB AUTO_INCREMENT=3026 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
--- Dumping data for table bukoenterprise.stock: ~20 rows (approximately)
-REPLACE INTO `stock` (`StockID`, `StockNumber`, `StockSupplier`, `StockPrice`, `StockItem`, `StockDate`) VALUES
-	(3000, 150, 'Ah Hock Enterprise', 'RM16.0/pkt', 'Tepung Gandum', '2024-12-19'),
-	(3001, 200, 'Meow Restock Berhad', 'RM 5.0/g', 'Susu Cair', '2024-12-18'),
-	(3002, 300, 'Kedai Underground Klang', 'RM 7.5/kg', 'Gula', '2024-12-17'),
-	(3003, 400, 'Abatu Warehouse', 'RM 2.5/ml', 'Minyak Masak', '2024-12-16'),
-	(3004, 180, 'Ah Hock Enterprise', 'RM 4.0/pkt', 'Pewarna Makanan', '2024-12-15'),
-	(3007, 450, 'Abatu Warehouse', 'RM 1.5/ml', 'Coklat Cair', '2024-12-12'),
-	(3008, 170, 'Ah Hock Enterprise', 'RM 5.5/pkt', 'Buah Kering', '2024-12-11'),
-	(3009, 260, 'Meow Restock Berhad', 'RM 2.0/g', 'Kacang Campuran', '2024-12-10'),
-	(3010, 360, 'Kedai Underground Klang', 'RM 4.5/kg', 'Selada', '2024-12-09'),
-	(3011, 470, 'Abatu Warehouse', 'RM 3.5/ml', 'Tomat', '2024-12-08'),
-	(3012, 190, 'Ah Hock Enterprise', 'RM 6.0/pkt', 'Jagung Manis', '2024-12-07'),
-	(3013, 270, 'Meow Restock Berhad', 'RM 4.0/g', 'Kacang Hijau', '2024-12-06'),
-	(3014, 370, 'Kedai Underground Klang', 'RM 7.0/kg', 'Beras', '2024-12-05'),
-	(3015, 480, 'Abatu Warehouse', 'RM 2.5/ml', 'Minyak Zaitun', '2024-12-04'),
-	(3016, 160, 'Ah Hock Enterprise', 'RM 5.0/pkt', 'Mangga Kering', '2024-12-03'),
-	(3017, 240, 'Meow Restock Berhad', 'RM 3.5/g', 'Kacang Almond', '2024-12-02'),
-	(3018, 330, 'Kedai Underground Klang', 'RM 6.5/kg', 'Wortel', '2024-12-01'),
-	(3019, 450, 'Abatu Warehouse', 'RM 4.5/ml', 'Saus Salad', '2024-11-30');
-
--- Dumping structure for table bukoenterprise.users
-CREATE TABLE IF NOT EXISTS `users` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `users_email_unique` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=1001 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- Dumping data for table bukoenterprise.users: ~1 rows (approximately)
-REPLACE INTO `users` (`id`, `name`, `email`, `password`) VALUES
-	(1000, 'admin', 'admin@buko.com', '240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9');
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
