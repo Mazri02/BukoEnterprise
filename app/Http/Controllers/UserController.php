@@ -9,8 +9,7 @@ use Illuminate\Support\Facades\Log;
 
 class UserController extends Controller {
     public function login(Request $req){
-        $data = User::where('name',$req->Username)->get()->first();
-        Log::info($data->password == hash('sha256',$req->Userpass));
+        $data = User::where('email',$req->Username)->get()->first();
 
         if($data->password == hash('sha256',$req->Userpass)){
             session(['token' => $data->id]);
