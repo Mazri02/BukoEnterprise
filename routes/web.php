@@ -73,7 +73,7 @@ Route::get('/ContactForm', function () {
     return Inertia::render('ContactForm');
 });
 
-Route::post('api/ContactForm', [FeedbackController::class, 'store']);
+Route::post('api/sendfeedback', [FeedbackController::class, 'store']);
 
 Route::get('/Menu', function () {
     return Inertia::render('Menu');
